@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FindOwn</title>
+</head>
+<body>
+<div class="mb-1 ">
+    <div class="row">
+        <div class="col-sm-6">
+            <input type="text" class="form-control " placeholder="Email" aria-label="Email"
+                   id="username">
+        </div>
+        <div class="col-sm-6 ms-0">
+            <select class="form-select" aria-label="Default select example" id="freefix">
+                <option selected>이메일 선택</option>
+                <option value="@naver.com">@naver.com</option>
+                <option value="@daum.net">@daum.net</option>
+                <option value="@gmail.com">@gmail.com</option>
+                <option value="@hamail.com">@hamail.com</option>
+                <option value="@yahoo.com">@yahoo.com</option>
+            </select>
+        </div>
+        <div class="col-sm-7 mt-3 me-3">
+            <input class="form-control mail-check-input" placeholder="인증번호 "
+                   disabled="disabled" maxlength="7" onkeyup="checkAuthNumFn()">
+        </div>
+        <div class="col-sm-3 mt-3 ">
+            <input type="button" class="btn btn-primary" id="mail-Check-btn" value="메일인증">
+        </div>
+        <span id="mail-check-warn" class="mb-2"></span>
+    </div>
+</div>
+</body>
+</html>
