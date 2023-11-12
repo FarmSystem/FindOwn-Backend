@@ -1,0 +1,61 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${MYSQL_URL}/${MYSQL_DATABASE}
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        highlight_sql: true
+        use_sql_comments: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      debug: true
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+            trust: smtp.naver.com
+          starttls:
+            enable: true
+  security:
+    user:
+      name: dlawjddn
+      password: dlawjddn
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+
+government:
+  data:
+    trademark:
+      search-trademark: ${SEARCH_TRADEMARK_URL}
+      trademark-private-key: ${TRADEMARK_SERVICE_KEY}
+    design:
+      search-design: ${SEARCH_DESIGN_URL}
+      design-private-key: ${DESIGN_SERVICE_KEY}
+
+
+generate:
+  random_string:
+    length: ${RANDOM_LENGTH}
+    start-bound: ${RANDOM_BOUND_START}
+    end-bound: ${RANDOM_BOUND_END}
+
+logging:
+  level:
+    #org.springframework.security: DEBUG
+    web: debug
+
