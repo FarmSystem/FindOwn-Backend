@@ -4,9 +4,13 @@ import Farm.Team4.FindOwnv2.security.handler.CustomAccessDeniedHandler;
 import Farm.Team4.FindOwnv2.security.handler.CustomAuthenticationEntryPointHandler;
 import Farm.Team4.FindOwnv2.security.handler.CustomAuthenticationFailureHandler;
 import Farm.Team4.FindOwnv2.security.handler.CustomAuthenticationSuccessHandler;
+import Farm.Team4.FindOwnv2.security.provider.CustomAuthenticationProvider;
+import Farm.Team4.FindOwnv2.security.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -27,12 +31,21 @@ public class SecurityConfig {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
     @Bean
+    public AuthenticationManager authenticationManager(
+            CustomUserDetailsService customUserDetailsService,
+            PasswordEncoder passwordEncoder) {
+        CustomAuthenticationProvider customAuthenticationProvider
+        = new CustomAuthenticationProvider(customUserDetailsService, passwordEncoder);
+        return new ProviderManager(customAuthenticationProvider);
+    }
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/api/v2/login").permitAll()
+                        .requestMatchers("/", "/api/v2/login").permitAll()
                         .requestMatchers("/api/v2/users").hasRole("USER")
                         .anyRequest().authenticated());
+        // 회원가입, 이메일 인증, 로그인 permit all 해야함 -> 그 외 api는 유저 권한으로 제한해도 충분할 듯?
 
         http
                 .formLogin(login -> login
