@@ -22,7 +22,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         SavedRequest savedRequest = requestCache.getRequest(request, response);
         if (savedRequest == null){
             log.info("기존 요청이 없는 상황 -> 기본 페이지로 이동");
-            response.sendRedirect("/");
+            response.sendRedirect("http://localhost:3000/home");
         } else {
             log.info("기존 요청이 인증 이슈로 인한 반려, 그 요청으로 다시 redirect");
             response.sendRedirect(savedRequest.getRedirectUrl());
