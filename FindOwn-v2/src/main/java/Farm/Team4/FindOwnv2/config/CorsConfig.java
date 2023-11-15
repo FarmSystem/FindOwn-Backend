@@ -19,7 +19,6 @@ public class CorsConfig {
         corsConfig.setAllowedMethods(List.of("GET", "POST", "PATCH", "DELETE"));
         corsConfig.setAllowedHeaders(List.of("*"));
         corsConfig.setAllowedHeaders(List.of("*"));
-
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfig);
 

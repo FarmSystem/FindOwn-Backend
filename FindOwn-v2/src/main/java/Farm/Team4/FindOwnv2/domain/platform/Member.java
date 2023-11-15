@@ -42,4 +42,7 @@ public class Member {
         this.register = LocalDateTime.now();
         this.role = "USER";
     }
+    public void changeEncoded(String encodedPassword){
+        this.password = encodedPassword;
+    }
 }
