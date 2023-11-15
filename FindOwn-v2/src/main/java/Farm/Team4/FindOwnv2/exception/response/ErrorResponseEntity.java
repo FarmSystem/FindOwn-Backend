@@ -3,12 +3,13 @@ package Farm.Team4.FindOwnv2.exception.response;
 import Farm.Team4.FindOwnv2.exception.CustomErrorCode;
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 @Builder
 @Getter
 public class ErrorResponseEntity {
-    private int status;
+    private HttpStatus status;
     private String code;
     private String message;
     public static ResponseEntity<ErrorResponseEntity> toResponseEntity(CustomErrorCode e){
