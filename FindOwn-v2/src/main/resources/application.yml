@@ -54,6 +54,13 @@ generate:
     start-bound: ${RANDOM_BOUND_START}
     end-bound: ${RANDOM_BOUND_END}
 
+jwt:
+  secret: ${JWT_SECRET}
+  access-token:
+    expiration: ${TOKEN_EXPIRATION}
+  refresh-token:
+    expiration: ${REFRESH_EXPIRATION}
+
 logging:
   level:
     #org.springframework.security: DEBUG
