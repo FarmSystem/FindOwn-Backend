@@ -2,6 +2,7 @@ package Farm.Team4.FindOwnv2.domain.community.board;
 
 import Farm.Team4.FindOwnv2.domain.platform.Member;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,7 +26,7 @@ public class Post {
     private Tag tag;
     @Column(columnDefinition = "LONGTEXT")
     private String content;
-    private LocalDateTime creatAt;
+    private LocalDateTime createdAt;
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
     private int viewCnt;
@@ -35,5 +36,15 @@ public class Post {
     }
     public void increaseScrap(){
         this.scrapCnt++;
+    }
+
+    public Post(Member writer, String title, Tag tag, String content) {
+        this.writer = writer;
+        this.title = title;
+        this.tag = tag;
+        this.content = content;
+        this.createdAt = LocalDateTime.now();
+        this.viewCnt = 0;
+        this.scrapCnt = 0;
     }
 }
