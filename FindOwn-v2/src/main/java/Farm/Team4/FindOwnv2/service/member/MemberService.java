@@ -2,6 +2,7 @@ package Farm.Team4.FindOwnv2.service;
 
 import Farm.Team4.FindOwnv2.domain.platform.Member;
 import Farm.Team4.FindOwnv2.dto.member.request.SaveMemberDTO;
+import Farm.Team4.FindOwnv2.dto.member.response.CheckIdDuplicated;
 import Farm.Team4.FindOwnv2.exception.CustomErrorCode;
 import Farm.Team4.FindOwnv2.exception.FindOwnException;
 import Farm.Team4.FindOwnv2.repository.MemberRepository;
@@ -31,5 +32,8 @@ public class MemberService {
     public Member findByUsername(String username){
         return memberRepository.findByUsername(username)
                 .orElseThrow(() -> new FindOwnException(CustomErrorCode.NOT_FOUND_MEMBER));
+    }
+    public CheckIdDuplicated idDuplicated(String username){
+        return new CheckIdDuplicated(!memberRepository.existsByUsername(username));
     }
 }
