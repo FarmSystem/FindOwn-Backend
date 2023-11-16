@@ -1,4 +1,4 @@
-package Farm.Team4.FindOwnv2.service;
+package Farm.Team4.FindOwnv2.service.auth;
 
 import Farm.Team4.FindOwnv2.dto.login.JwtDTO;
 import Farm.Team4.FindOwnv2.service.auth.provider.JwtProvider;
