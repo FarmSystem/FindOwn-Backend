@@ -23,4 +23,15 @@ public class Comment {
     private Post post;
     private String content;
     private LocalDateTime createdAt;
+
+    public Comment(Member writer, Post post, String content) {
+        this.writer = writer;
+        this.post = post;
+        this.content = content;
+        this.createdAt = LocalDateTime.now();
+    }
+    public void update(String content){
+        this.content = content;
+        this.createdAt = LocalDateTime.now();
+    }
 }

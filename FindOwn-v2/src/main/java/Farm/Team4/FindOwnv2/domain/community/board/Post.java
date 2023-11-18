@@ -1,10 +1,12 @@
 package Farm.Team4.FindOwnv2.domain.community.board;
 
 import Farm.Team4.FindOwnv2.domain.platform.Member;
+import Farm.Team4.FindOwnv2.dto.community.post.request.UpdatePostDTO;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,9 +33,11 @@ public class Post {
     private List<Comment> comments = new ArrayList<>();
     private int viewCnt;
     private int scrapCnt;
+    @Transactional
     public void increaseView(){
-        this.viewCnt++;
+        this.viewCnt+=1;
     }
+    @Transactional
     public void increaseScrap(){
         this.scrapCnt++;
     }
@@ -46,5 +50,11 @@ public class Post {
         this.createdAt = LocalDateTime.now();
         this.viewCnt = 0;
         this.scrapCnt = 0;
+    }
+    public void update(UpdatePostDTO updatePostDTO){
+        this.title = updatePostDTO.getTitle();
+        this.tag = Tag.valueOf(updatePostDTO.getTagName());
+        this.content = updatePostDTO.getContent();
+        this.createdAt = LocalDateTime.now();
     }
 }
