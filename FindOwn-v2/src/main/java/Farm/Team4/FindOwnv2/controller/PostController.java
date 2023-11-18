@@ -1,13 +1,12 @@
 package Farm.Team4.FindOwnv2.controller;
 
 import Farm.Team4.FindOwnv2.dto.community.post.request.CreatePostDTO;
+import Farm.Team4.FindOwnv2.dto.community.post.request.UpdatePostDTO;
+import Farm.Team4.FindOwnv2.dto.community.post.response.ShowPostDetailDTO;
 import Farm.Team4.FindOwnv2.service.community.post.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -18,5 +17,17 @@ public class PostController {
     @PostMapping("/community/post/write")
     public void createPost(@RequestBody CreatePostDTO createPostDTO){
         postService.createPost(createPostDTO);
+    }
+    @GetMapping("/community/post")
+    public ShowPostDetailDTO showPostDetail(@RequestParam Long id){
+        return postService.showPostDetail(id);
+    }
+    @PatchMapping("/community/post/edit")
+    public void updatePost(@RequestBody UpdatePostDTO updatePostDTO){
+        postService.updatePost(updatePostDTO);
+    }
+    @DeleteMapping("/community/post/delete")
+    public void deletePost(@RequestParam Long id){
+        postService.deletePost(id);
     }
 }

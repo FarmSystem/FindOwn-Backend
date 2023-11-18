@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 public enum CustomErrorCode {
     //400
     NOT_FOUND_MEMBER(HttpStatus.BAD_REQUEST, "NOT FOUND MEMBER"),
+    NOT_FOUND_POST(HttpStatus.BAD_REQUEST, "NOT FOUND POST"),
+    NOT_FOUND_COMMENT(HttpStatus.BAD_REQUEST, "NOT FOUND COMMENT"),
+    NOT_MATCH_WRITER(HttpStatus.BAD_REQUEST, "WRITER AND DELETER IS NOT SAME"),
 
 
     //401
