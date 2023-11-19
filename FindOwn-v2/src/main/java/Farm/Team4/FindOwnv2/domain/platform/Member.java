@@ -45,4 +45,5 @@ public class Member {
     public void changeEncoded(String encodedPassword){
         this.password = encodedPassword;
     }
+    public void changeUsername(String newUsername) {this.username = newUsername;}
 }
