@@ -48,7 +48,6 @@ public class PostService {
                 destPost.getTag().toString(),
                 destPost.getContent(),
                 destPost.getViewCnt(),
-                destPost.getScrapCnt(),
                 destPost.getComments().stream()
                         .map(comment -> new ShowCommentDTO(comment.getId(), comment.getWriter().getUsername(), comment.getContent(), comment.getCreatedAt()))
                         .toList()
@@ -63,8 +62,7 @@ public class PostService {
                         post.getTag().name(),
                         post.getCreatedAt(),
                         post.getComments().size(),
-                        post.getViewCnt(),
-                        post.getScrapCnt()))
+                        post.getViewCnt()))
                 .toList();
     }
     public List<ShowPostSimpleDTO> showTagPostSimple(String tagName) {
@@ -76,8 +74,7 @@ public class PostService {
                         post.getTag().name(),
                         post.getCreatedAt(),
                         post.getComments().size(),
-                        post.getViewCnt(),
-                        post.getScrapCnt()))
+                        post.getViewCnt()))
                 .toList();
     }
     public List<ShowPostSimpleDTO> showSearchResults(String title){
@@ -89,8 +86,7 @@ public class PostService {
                         post.getTag().name(),
                         post.getCreatedAt(),
                         post.getComments().size(),
-                        post.getViewCnt(),
-                        post.getScrapCnt()))
+                        post.getViewCnt()))
                 .toList();
     }
 
