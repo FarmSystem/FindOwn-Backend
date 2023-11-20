@@ -18,4 +18,9 @@ public class Scrap {
     @ManyToOne
     @JoinColumn(name = "issue_id")
     private Issue issue;
+
+    public Scrap(Member member, Issue issue) {
+        this.member = member;
+        this.issue = issue;
+    }
 }
