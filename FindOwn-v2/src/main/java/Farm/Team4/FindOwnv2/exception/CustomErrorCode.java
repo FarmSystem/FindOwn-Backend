@@ -7,8 +7,6 @@ import org.springframework.http.HttpStatus;
 public enum CustomErrorCode {
     //400
     NOT_FOUND_MEMBER(HttpStatus.BAD_REQUEST, "NOT FOUND MEMBER"),
-    NOT_FOUND_POST(HttpStatus.BAD_REQUEST, "NOT FOUND POST"),
-    NOT_FOUND_COMMENT(HttpStatus.BAD_REQUEST, "NOT FOUND COMMENT"),
     NOT_MATCH_WRITER(HttpStatus.BAD_REQUEST, "WRITER AND DELETER IS NOT SAME"),
 
 
@@ -20,9 +18,14 @@ public enum CustomErrorCode {
 
 
     //403
-    ACCESS_DENIED_MEMBER(HttpStatus.FORBIDDEN, "ACCESS DENIED MEMBER");
+    ACCESS_DENIED_MEMBER(HttpStatus.FORBIDDEN, "ACCESS DENIED MEMBER"),
+
 
     //404
+    NOT_FOUND_POST(HttpStatus.NOT_FOUND, "NOT FOUND POST"),
+    NOT_FOUND_COMMENT(HttpStatus.NOT_FOUND, "NOT FOUND COMMENT"),
+    NOT_FOUND_ISSUE(HttpStatus.NOT_FOUND, "NOT FOUND ISSUE"),
+    NOT_FOUND_SCRAP(HttpStatus.NOT_FOUND, "NOT FOUND SCRAP"),
 
 
     //405
