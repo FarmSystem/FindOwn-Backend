@@ -13,17 +13,15 @@ public class ShowPostDetailDTO {
     private String tag;
     private String content;
     private int viewCnt;
-    private int scrapCnt;
     private List<ShowCommentDTO> comments;
 
-    public ShowPostDetailDTO(Long id, String title, String writer, String tag, String content, int viewCnt, int scrapCnt, List<ShowCommentDTO> comments) {
+    public ShowPostDetailDTO(Long id, String title, String writer, String tag, String content, int viewCnt, List<ShowCommentDTO> comments) {
         this.postId = id;
         this.title = title;
         this.writer = writer;
         this.tag = tag;
         this.content = content;
         this.viewCnt = viewCnt;
-        this.scrapCnt = scrapCnt;
         this.comments = comments;
     }
 }

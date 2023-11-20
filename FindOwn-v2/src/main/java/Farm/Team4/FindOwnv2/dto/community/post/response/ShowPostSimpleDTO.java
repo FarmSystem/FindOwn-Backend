@@ -13,9 +13,8 @@ public class ShowPostSimpleDTO {
     private LocalDateTime createdAt;
     private int commentCnt;
     private int viewCnt;
-    private int scrapCnt;
 
-    public ShowPostSimpleDTO(Long postId, String title, String writerId, String tagName, LocalDateTime createdAt, int commentCnt, int viewCnt, int scrapCnt) {
+    public ShowPostSimpleDTO(Long postId, String title, String writerId, String tagName, LocalDateTime createdAt, int commentCnt, int viewCnt) {
         this.postId = postId;
         this.title = title;
         this.writerId = writerId;
@@ -23,6 +22,5 @@ public class ShowPostSimpleDTO {
         this.createdAt = createdAt;
         this.commentCnt = commentCnt;
         this.viewCnt = viewCnt;
-        this.scrapCnt = scrapCnt;
     }
 }

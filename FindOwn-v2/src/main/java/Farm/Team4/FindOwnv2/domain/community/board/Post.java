@@ -32,14 +32,9 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
     private int viewCnt;
-    private int scrapCnt;
     @Transactional
     public void increaseView(){
         this.viewCnt+=1;
-    }
-    @Transactional
-    public void increaseScrap(){
-        this.scrapCnt++;
     }
 
     public Post(Member writer, String title, Tag tag, String content) {
@@ -49,7 +44,6 @@ public class Post {
         this.content = content;
         this.createdAt = LocalDateTime.now();
         this.viewCnt = 0;
-        this.scrapCnt = 0;
     }
     public void update(UpdatePostDTO updatePostDTO){
         this.title = updatePostDTO.getTitle();
