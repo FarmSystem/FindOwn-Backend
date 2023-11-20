@@ -17,19 +17,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
-    @PostMapping("/community/post/write")
+    @PostMapping("/community/post")
     public void createPost(@RequestBody CreatePostDTO createPostDTO){
         postService.createPost(createPostDTO);
     }
-    @GetMapping("/community/post")
+    @GetMapping("/community/post/")
     public ShowPostDetailDTO showPostDetail(@RequestParam Long id){
         return postService.showPostDetail(id);
     }
-    @GetMapping("/community")
+    @GetMapping("/community/post")
     public List<ShowPostSimpleDTO> showAllPostSimple(){
         return postService.showAllPostSimple();
     }
-    @GetMapping("/community/{tagName}")
+    @GetMapping("/community/post/{tagName}")
     public List<ShowPostSimpleDTO> showTagPostSimple(@PathVariable String tagName){
         return postService.showTagPostSimple(tagName);
     }
@@ -37,11 +37,11 @@ public class PostController {
     public List<ShowPostSimpleDTO> showSearchResults(@RequestParam String title){
         return postService.showSearchResults(title);
     }
-    @PatchMapping("/community/post/edit")
+    @PatchMapping("/community/post")
     public void updatePost(@RequestBody UpdatePostDTO updatePostDTO){
         postService.updatePost(updatePostDTO);
     }
-    @DeleteMapping("/community/post/delete")
+    @DeleteMapping("/community/post")
     public void deletePost(@RequestParam Long id){
         postService.deletePost(id);
     }
