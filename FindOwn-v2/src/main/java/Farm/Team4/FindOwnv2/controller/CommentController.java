@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CommentController {
     private final CommentService commentService;
-    @PostMapping("/write")
+    @PostMapping
     public void createComment(@RequestBody CreateCommentDTO createCommentDTO){
         commentService.createComment(createCommentDTO);
     }
-    @PatchMapping("/edit")
+    @PatchMapping
     public void updateComment(@RequestBody UpdateCommentDTO updateCommentDTO){
         commentService.updateComment(updateCommentDTO);
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping
     public void deleteComment(@RequestParam Long id){
         commentService.deleteComment(id);
     }
