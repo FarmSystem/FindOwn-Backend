@@ -76,6 +76,10 @@ public class JwtProvider implements InitializingBean {
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
 
+        for (GrantedAuthority authority : authorities) {
+            log.info(authority.getAuthority());
+        }
+
         User principal = new User(claims.getSubject(), "", authorities);
         return new UsernamePasswordAuthenticationToken(principal, token, authorities);
     }

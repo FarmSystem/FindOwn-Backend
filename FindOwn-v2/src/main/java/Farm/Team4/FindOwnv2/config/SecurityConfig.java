@@ -43,7 +43,7 @@ public class SecurityConfig {
                         // 메인 페이지, 로그인, 회원가입, 이메일 인증 -> permitAll
                         // 그 외 모든 api -> user 권한 필요
                         .requestMatchers("/api/v2/no-auth/**").permitAll()
-                        .requestMatchers("/api/v2/users").hasRole("USER")
+                        .requestMatchers("/api/v2/users/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exception -> exception
