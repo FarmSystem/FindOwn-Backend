@@ -32,10 +32,6 @@ public class MemberService {
         requestMember.changeEncoded(passwordEncoder.encode(saveMemberDTO.getPassword()));
         memberRepository.save(requestMember);
     }
-    public Member findById(Long memberId){
-        return memberRepository.findById(memberId)
-                .orElseThrow(() -> new FindOwnException(CustomErrorCode.NOT_FOUND_MEMBER));
-    }
     public Member findByUsername(String username){
         return memberRepository.findByUsername(username)
                 .orElseThrow(() -> new FindOwnException(CustomErrorCode.NOT_FOUND_MEMBER));
