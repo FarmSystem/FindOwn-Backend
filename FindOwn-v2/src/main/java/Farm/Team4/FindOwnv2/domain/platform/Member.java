@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +22,11 @@ public class Member {
     private Long Id;
     private String username;
     private String password;
-    private String korName;
+    private String nickname;
     private String email;
     private LocalDateTime register;
     private String role;
+    private LocalDate passwordUpdateDate;
     @OneToMany(mappedBy = "ownMember", cascade = CascadeType.ALL)
     private List<Trademark> myTrademarks = new ArrayList<>();
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
@@ -34,13 +36,14 @@ public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Scrap> myScraps = new ArrayList<>();
 
-    public Member(String username, String password, String korName, String email) {
+    public Member(String username, String password, String nickname, String email) {
         this.username = username;
         this.password = password;
-        this.korName = korName;
+        this.nickname = nickname;
         this.email = email;
         this.register = LocalDateTime.now();
         this.role = "USER";
+        this.passwordUpdateDate = LocalDate.now();
     }
     public void changeEncoded(String encodedPassword){
         this.password = encodedPassword;
