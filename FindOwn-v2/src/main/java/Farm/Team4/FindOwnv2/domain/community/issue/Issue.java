@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,13 +26,14 @@ public class Issue {
     private String reporter;
     private int viewCnt;
     private int scrapCnt;
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
     public void increaseView(){
         this.viewCnt++;
     }
     public void increaseScrap(){
         this.scrapCnt++;
     }
+    public void decreaseScrap(){this.scrapCnt--;}
 
     public Issue(String category, String title, String content, String source, String reporter) {
         this.category = Category.valueOf(category);
@@ -41,6 +43,6 @@ public class Issue {
         this.reporter = reporter;
         this.viewCnt = 0;
         this.scrapCnt = 0;
-        this.createdAt = LocalDateTime.now();
+        this.createdAt = LocalDate.now();
     }
 }

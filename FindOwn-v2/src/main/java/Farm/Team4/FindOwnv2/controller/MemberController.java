@@ -6,6 +6,8 @@ import Farm.Team4.FindOwnv2.dto.member.request.ChangeMemberIdDTO;
 import Farm.Team4.FindOwnv2.dto.member.request.ChangeMemberPasswordDTO;
 import Farm.Team4.FindOwnv2.dto.member.request.SaveMemberDTO;
 import Farm.Team4.FindOwnv2.dto.member.response.CheckIdDuplicatedDTO;
+import Farm.Team4.FindOwnv2.dto.member.response.UserInfoDto;
+import Farm.Team4.FindOwnv2.dto.member.response.UserScrapInfoDto;
 import Farm.Team4.FindOwnv2.service.member.MemberService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -32,6 +35,14 @@ public class MemberController {
     @PostMapping("/users/auth/password")
     public ResultPasswordDTO isMatchPassword(@RequestBody VerifyPasswordDTO passwordDTO){
         return memberService.isMatchPassword(passwordDTO.getRawPassword());
+    }
+    @GetMapping("/users/my-page/info")
+    public UserInfoDto showMyInfo(){
+        return memberService.showMyInfo();
+    }
+    @GetMapping("/users/my-page/storage") //  여기서는 스크랩한 이슈 정보만 넘김
+    public List<UserScrapInfoDto> showMyScrap(){
+        return memberService.showMyScrap();
     }
     @PatchMapping("/users/my-page/change/id")
     public void changeMemberId(@RequestBody ChangeMemberIdDTO changeMemberIdDTO, HttpServletResponse response) throws IOException {

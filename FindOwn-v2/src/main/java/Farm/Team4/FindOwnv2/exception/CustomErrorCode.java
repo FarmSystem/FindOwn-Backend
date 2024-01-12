@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 public enum CustomErrorCode {
     //400
     NOT_FOUND_MEMBER(HttpStatus.BAD_REQUEST, "NOT FOUND MEMBER"),
+    DUPLICATED_ID(HttpStatus.BAD_REQUEST, "DUPLICATED USER ID"),
+    DUPLICATED_ISSUE(HttpStatus.BAD_REQUEST, "ALREADY SCRAPED ISSUE"),
     NOT_MATCH_WRITER(HttpStatus.BAD_REQUEST, "WRITER AND DELETER IS NOT SAME"),
 
 

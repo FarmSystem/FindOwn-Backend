@@ -27,6 +27,8 @@ public class ScrapService {
         findIssue.increaseScrap();
 
         Member findMember = getMember();
+        if (scrapRepository.existsByMemberAndIssue(findMember, findIssue))
+            throw new FindOwnException(CustomErrorCode.DUPLICATED_ISSUE);
         scrapRepository.save(new Scrap(findMember, findIssue));
     }
     public Scrap findById(Long scrapId){
@@ -38,6 +40,7 @@ public class ScrapService {
         Scrap findScrap = findById(id);
         if (!findScrap.getMember().equals(getMember()))
             throw new FindOwnException(CustomErrorCode.NOT_MATCH_WRITER);
+        findScrap.getIssue().decreaseScrap();
         scrapRepository.delete(findScrap);
     }
     private Member getMember(){
