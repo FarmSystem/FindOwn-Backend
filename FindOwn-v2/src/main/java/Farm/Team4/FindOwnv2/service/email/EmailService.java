@@ -23,7 +23,7 @@ public class EmailService {
     private final JavaMailSender javaMailSender;
     private final RedisService redisService;
     private String code = createCode();
-    @Value("${mail.username}")
+    @Value("${spring.mail.username}")
     private String id;
 
     public String verifyCode(VerifyEmailCodeDTO request){
