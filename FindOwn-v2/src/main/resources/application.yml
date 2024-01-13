@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:mysql://${MYSQL_URL}/${MYSQL_DATABASE}
-    username: ${MYSQL_USERNAME}
-    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://find-own.c966a4m2k7ff.ap-northeast-2.rds.amazonaws.com/findown
+    username: admin1234
+    password: admin1234
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         show_sql: true
@@ -15,10 +15,10 @@ spring:
         use_sql_comments: true
         dialect: org.hibernate.dialect.MySQL8Dialect
   mail:
-    host: ${MAIL_HOST}
-    port: ${MAIL_PORT}
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
+    host: smtp.naver.com
+    port: 465
+    username: jwl5015@naver.com
+    password: dlawjddn1234!
     properties:
       debug: true
       mail:
@@ -38,31 +38,22 @@ spring:
       host: 127.0.0.1
       port: 6379
 
-government:
-  data:
-    trademark:
-      search-trademark: ${SEARCH_TRADEMARK_URL}
-      trademark-private-key: ${TRADEMARK_SERVICE_KEY}
-    design:
-      search-design: ${SEARCH_DESIGN_URL}
-      design-private-key: ${DESIGN_SERVICE_KEY}
-
 
 generate:
   random_string:
-    length: ${RANDOM_LENGTH}
-    start-bound: ${RANDOM_BOUND_START}
-    end-bound: ${RANDOM_BOUND_END}
+    length: 8
+    start-bound: 33
+    end-bound: 94
 
 jwt:
-  secret: ${JWT_SECRET}
+  secret: 16d3ed2a16dd8c25b3b2f207c00071c8ca69a7a8bd4e9eb7d60f817147f86057ce309de62d3b9b404afc4bf7cebbfb023c80dcf1b4f3c33fc03f75768a2b6d07
   access-token:
-    expiration: ${TOKEN_EXPIRATION}
+    expiration: 86400000
   refresh-token:
-    expiration: ${REFRESH_EXPIRATION}
+    expiration: 604800000
 
 logging:
   level:
     #org.springframework.security: DEBUG
-    web: debug
+    web: DEBUG
 
