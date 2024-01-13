@@ -38,6 +38,8 @@ public class IssueService {
         Issue findIssue = findById(id);
         findIssue.increaseView();
         issueRepository.save(findIssue);
+
+        Member loginMember = memberService.getMember();
         return new ShowIssueDetailDTO(
                 findIssue.getId(),
                 findIssue.getTitle(),
@@ -46,7 +48,8 @@ public class IssueService {
                 findIssue.getSource(),
                 findIssue.getReporter(),
                 findIssue.getViewCnt(),
-                findIssue.getScrapCnt()
+                findIssue.getScrapCnt(),
+                scrapRepository.existsByMemberAndIssue(loginMember, findIssue)
         );
     }
     public List<ShowIssueSimpleDTO> showIssueSimpleList() {
