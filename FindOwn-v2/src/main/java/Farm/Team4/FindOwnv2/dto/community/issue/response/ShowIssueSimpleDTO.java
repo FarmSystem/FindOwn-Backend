@@ -13,13 +13,15 @@ public class ShowIssueSimpleDTO {
     private int viewCnt;
     private int scrapCnt;
     private LocalDate createAt;
+    private boolean isScraped;
 
-    public ShowIssueSimpleDTO(Long id, String title, String simpleContent, int viewCnt, int scrapCnt, LocalDate createAt) {
+    public ShowIssueSimpleDTO(Long id, String title, String simpleContent, int viewCnt, int scrapCnt, LocalDate createAt, boolean isScraped) {
         this.id = id;
         this.title = title;
         this.simpleContent = simpleContent;
         this.viewCnt = viewCnt;
         this.scrapCnt = scrapCnt;
         this.createAt = createAt;
+        this.isScraped = isScraped;
     }
 }
