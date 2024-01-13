@@ -5,6 +5,8 @@ import lombok.Builder;
 
 @Builder
 public record UserScrapInfoDto (
+        @JsonProperty("scrap_id")
+        Long scrapId,
         @JsonProperty("scrap_title")
         String scrapTitle,
         @JsonProperty("category")
