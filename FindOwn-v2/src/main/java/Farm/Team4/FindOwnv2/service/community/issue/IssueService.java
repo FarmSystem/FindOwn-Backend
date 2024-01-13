@@ -47,6 +47,7 @@ public class IssueService {
     public List<ShowIssueSimpleDTO> showIssueSimpleList() {
         return issueRepository.findAll().stream()
                 .map(issue -> new ShowIssueSimpleDTO(
+                        issue.getId(),
                         issue.getTitle(),
                         issue.getContent().substring(0,30) + "...",
                         issue.getViewCnt(),
