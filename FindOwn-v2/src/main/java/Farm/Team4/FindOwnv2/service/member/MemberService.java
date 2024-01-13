@@ -94,8 +94,7 @@ public class MemberService {
         memberRepository.delete(member);
         log.info("회원 삭제 완료");
     }
-    private Member getMember(){
+    public Member getMember(){
         return findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
     }
 }

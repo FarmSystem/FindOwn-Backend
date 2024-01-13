@@ -1,12 +1,15 @@
 package Farm.Team4.FindOwnv2.service.community.issue;
 
 import Farm.Team4.FindOwnv2.domain.community.issue.Issue;
+import Farm.Team4.FindOwnv2.domain.platform.Member;
 import Farm.Team4.FindOwnv2.dto.community.issue.request.CreateIssueDTO;
 import Farm.Team4.FindOwnv2.dto.community.issue.response.ShowIssueDetailDTO;
 import Farm.Team4.FindOwnv2.dto.community.issue.response.ShowIssueSimpleDTO;
 import Farm.Team4.FindOwnv2.exception.CustomErrorCode;
 import Farm.Team4.FindOwnv2.exception.FindOwnException;
 import Farm.Team4.FindOwnv2.repository.IssueRepository;
+import Farm.Team4.FindOwnv2.repository.ScrapRepository;
+import Farm.Team4.FindOwnv2.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class IssueService {
     private final IssueRepository issueRepository;
+    private final ScrapRepository scrapRepository;
+    private final MemberService memberService;
     @Transactional
     public void createIssue(CreateIssueDTO createIssueDTO) {
         Issue issue = createIssueDTO.toIssue();
@@ -45,6 +50,7 @@ public class IssueService {
         );
     }
     public List<ShowIssueSimpleDTO> showIssueSimpleList() {
+        Member loginMember = memberService.getMember();
         return issueRepository.findAll().stream()
                 .map(issue -> new ShowIssueSimpleDTO(
                         issue.getId(),
@@ -52,7 +58,8 @@ public class IssueService {
                         issue.getContent().substring(0,30) + "...",
                         issue.getViewCnt(),
                         issue.getScrapCnt(),
-                        issue.getCreatedAt()))
-                .toList();
+                        issue.getCreatedAt(),
+                        scrapRepository.existsByMemberAndIssue(loginMember, issue)
+                )).toList();
     }
 }
