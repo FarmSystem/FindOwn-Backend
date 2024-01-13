@@ -5,10 +5,10 @@ import lombok.Builder;
 
 @Builder
 public record UserScrapInfoDto (
-        @JsonProperty("scrap_id")
-        Long scrapId,
-        @JsonProperty("scrap_title")
-        String scrapTitle,
+        @JsonProperty("issue_id")
+        Long issueId,
+        @JsonProperty("issue_title")
+        String issueTitle,
         @JsonProperty("category")
         String category,
         @JsonProperty("year")
