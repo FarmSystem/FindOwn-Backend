@@ -7,13 +7,15 @@ import java.time.LocalDateTime;
 
 @Data
 public class ShowIssueSimpleDTO {
+    private Long id;
     private String title;
     private String simpleContent; // 축약한 글
     private int viewCnt;
     private int scrapCnt;
     private LocalDate createAt;
 
-    public ShowIssueSimpleDTO(String title, String simpleContent, int viewCnt, int scrapCnt, LocalDate createAt) {
+    public ShowIssueSimpleDTO(Long id, String title, String simpleContent, int viewCnt, int scrapCnt, LocalDate createAt) {
+        this.id = id;
         this.title = title;
         this.simpleContent = simpleContent;
         this.viewCnt = viewCnt;

@@ -50,7 +50,8 @@ public class MemberService {
         Member loginMember = getMember();
         return loginMember.getMyScraps().stream()
                 .map(scrap -> UserScrapInfoDto.builder()
-                        .scrapTitle(scrap.getIssue().getTitle())
+                        .issueId(scrap.getIssue().getId())
+                        .issueTitle(scrap.getIssue().getTitle())
                         .category(scrap.getIssue().getCategory().toString())
                         .year(scrap.getIssue().getCreatedAt().getYear())
                         .month(scrap.getIssue().getCreatedAt().getMonthValue())
