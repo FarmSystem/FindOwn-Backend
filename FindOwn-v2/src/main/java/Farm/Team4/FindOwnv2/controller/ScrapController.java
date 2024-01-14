@@ -14,8 +14,8 @@ public class ScrapController {
         scrapService.createScrap(id);
     }
     @DeleteMapping("/")
-    public void deleteScrap(@RequestParam Long id){
-        scrapService.deleteScrap(id);
+    public void deleteScrap(@RequestParam Long issueId){
+        scrapService.deleteScrap(issueId);
     }
 
 }

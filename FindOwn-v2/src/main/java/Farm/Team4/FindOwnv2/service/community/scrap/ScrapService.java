@@ -31,21 +31,17 @@ public class ScrapService {
             throw new FindOwnException(CustomErrorCode.DUPLICATED_ISSUE);
         scrapRepository.save(new Scrap(findMember, findIssue));
     }
-    public Scrap findById(Long scrapId){
-        return scrapRepository.findById(scrapId)
+    public Scrap findByMemberAndIssue(Member member, Issue issue){
+        return scrapRepository.findByMemberAndIssue(member, issue)
                 .orElseThrow(() -> new FindOwnException(CustomErrorCode.NOT_FOUND_SCRAP));
     }
     @Transactional
-    public void deleteScrap(Long id) {
-        Scrap findScrap = findById(id);
-        if (!findScrap.getMember().equals(getMember()))
-            throw new FindOwnException(CustomErrorCode.NOT_MATCH_WRITER);
+    public void deleteScrap(Long issueId) {
+        Scrap findScrap = findByMemberAndIssue(getMember(), issueService.findById(issueId));
         findScrap.getIssue().decreaseScrap();
         scrapRepository.delete(findScrap);
     }
     private Member getMember(){
         return memberService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
     }
-
-
 }
