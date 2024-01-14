@@ -28,4 +28,10 @@ public class IssueController {
     public List<ShowIssueSimpleDTO> showIssueSimpleList(){
         return issueService.showIssueSimpleList();
     }
+
+    @DeleteMapping("/")
+    public void deleteIssue(@RequestParam Long id){
+        issueService.deleteIssue(id);
+    }
+
 }
