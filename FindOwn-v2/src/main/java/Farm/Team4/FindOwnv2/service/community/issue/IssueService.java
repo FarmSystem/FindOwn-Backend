@@ -65,4 +65,8 @@ public class IssueService {
                         scrapRepository.existsByMemberAndIssue(loginMember, issue)
                 )).toList();
     }
+    @Transactional
+    public void deleteIssue(Long id) {
+        issueRepository.delete(findById(id));
+    }
 }
