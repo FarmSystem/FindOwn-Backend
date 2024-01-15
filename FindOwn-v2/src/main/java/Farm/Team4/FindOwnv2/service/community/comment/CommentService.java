@@ -38,7 +38,7 @@ public class CommentService {
     public void updateComment(UpdateCommentDTO updateCommentDTO){
         Comment findComment = findById(updateCommentDTO.getCommentId());
         log.info("댓글 정보 가져오기 성공");
-        if (!findComment.getWriter().getUsername().equals(updateCommentDTO.getWriterId()))
+        if (!findComment.getWriter().equals(getMember()))
             throw new FindOwnException(CustomErrorCode.NOT_MATCH_WRITER);
         findComment.update(updateCommentDTO.getContent());
         log.info("댓글 수정 완료");
