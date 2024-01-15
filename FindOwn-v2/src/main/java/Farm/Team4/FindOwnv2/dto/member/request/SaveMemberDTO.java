@@ -7,9 +7,8 @@ import lombok.Data;
 public class SaveMemberDTO {
     private String id;
     private String password;
-    private String nickname;
     private String email;
     public Member toMember(){
-        return new Member(this.id, this.password, this.nickname, this.email);
+        return new Member(this.id, this.password, this.email);
     }
 }

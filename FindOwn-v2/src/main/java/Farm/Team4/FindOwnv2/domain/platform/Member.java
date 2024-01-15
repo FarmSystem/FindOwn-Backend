@@ -22,7 +22,6 @@ public class Member {
     private Long Id;
     private String username;
     private String password;
-    private String nickname;
     private String email;
     private LocalDateTime register;
     private String role;
@@ -36,10 +35,9 @@ public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Scrap> myScraps = new ArrayList<>();
 
-    public Member(String username, String password, String nickname, String email) {
+    public Member(String username, String password,  String email) {
         this.username = username;
         this.password = password;
-        this.nickname = nickname;
         this.email = email;
         this.register = LocalDateTime.now();
         this.role = "USER";

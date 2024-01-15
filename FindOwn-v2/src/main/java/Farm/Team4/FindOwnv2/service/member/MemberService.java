@@ -41,7 +41,6 @@ public class MemberService {
     public UserInfoDto showMyInfo(){
         Member loginMember = getMember();
         return UserInfoDto.builder()
-                .nickname(loginMember.getNickname())
                 .email(loginMember.getEmail())
                 .passwordUpdateDate(loginMember.getPasswordUpdateDate())
                 .build();
