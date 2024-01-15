@@ -26,8 +26,6 @@ public class Member {
     private LocalDateTime register;
     private String role;
     private LocalDate passwordUpdateDate;
-    @OneToMany(mappedBy = "ownMember", cascade = CascadeType.ALL)
-    private List<Trademark> myTrademarks = new ArrayList<>();
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Comparison> myJudgements = new ArrayList<>();
     @OneToMany(mappedBy = "writer", cascade = CascadeType.ALL)
