@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://find-own.c966a4m2k7ff.ap-northeast-2.rds.amazonaws.com/findown
-    username: admin1234
-    password: admin1234
+    url: jdbc:mysql://localhost:3306/findown_db
+    username: root
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -29,6 +29,10 @@ spring:
             trust: smtp.naver.com
           starttls:
             enable: true
+  servlet:
+    multipart:
+      max-request-size: 30MB
+      max-file-size: 30MB
   security:
     user:
       name: dlawjddn
@@ -56,4 +60,15 @@ logging:
   level:
     #org.springframework.security: DEBUG
     web: DEBUG
+cloud:
+  aws:
+    s3:
+      bucket: findown-bucket
+    credentials:
+      access-key: AKIAQPXPWAKTEITKZQUG
+      secret-key: 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
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
 
