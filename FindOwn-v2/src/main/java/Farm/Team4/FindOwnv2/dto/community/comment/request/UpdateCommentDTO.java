@@ -5,6 +5,5 @@ import lombok.Data;
 @Data
 public class UpdateCommentDTO {
     private Long commentId;
-    private String writerId;
     private String content;
 }
