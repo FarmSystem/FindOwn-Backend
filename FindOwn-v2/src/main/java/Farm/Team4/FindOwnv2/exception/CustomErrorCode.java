@@ -32,6 +32,11 @@ public enum CustomErrorCode {
 
 
     //405
+
+
+
+    //500
+    CANT_GET_IMAGE(HttpStatus.INTERNAL_SERVER_ERROR, "다운로드 링크에서 이미지를 가져올 수 없습니다."),
     ;
     private final HttpStatus code;
     private final String errorMessage;
