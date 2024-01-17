@@ -7,8 +7,8 @@ import java.util.List;
 
 @Builder
 public record ComparisonResultDto(
-        @JsonProperty("trademark_infos")
-        List<ComparisonTrademarkDto> result
+        @JsonProperty("result")
+        List<JudgementAIDto> trademark
 
 ) {
 }

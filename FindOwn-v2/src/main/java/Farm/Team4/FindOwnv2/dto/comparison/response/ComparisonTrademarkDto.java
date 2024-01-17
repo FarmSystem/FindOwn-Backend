@@ -19,8 +19,12 @@ public class ComparisonTrademarkDto{
         private String applicationNumber;
         @JsonProperty("applicant_name")
         private String applicationName;
-
-        public void updatePath(String s3Path){
-                this.imagePath = s3Path;
+        public ComparisonTrademarkDto(JudgementAIDto judgementAIDto) {
+                this.result = judgementAIDto.getResult();
+                this.similarity = judgementAIDto.getSimilarity().toString();
+                this.title = judgementAIDto.getTitle();
+                this.imagePath = judgementAIDto.getImagePath();
+                this.applicationNumber = judgementAIDto.getApplicationNumber();
+                this.applicationName = judgementAIDto.getApplicantName();
         }
 }
