@@ -2,6 +2,7 @@ package Farm.Team4.FindOwnv2.controller;
 
 import Farm.Team4.FindOwnv2.dto.auth.request.VerifyPasswordDTO;
 import Farm.Team4.FindOwnv2.dto.auth.response.ResultPasswordDTO;
+import Farm.Team4.FindOwnv2.dto.comparison.request.ShowMyResultDto;
 import Farm.Team4.FindOwnv2.dto.member.request.ChangeMemberIdDTO;
 import Farm.Team4.FindOwnv2.dto.member.request.ChangeMemberPasswordDTO;
 import Farm.Team4.FindOwnv2.dto.member.request.SaveMemberDTO;
@@ -40,9 +41,13 @@ public class MemberController {
     public UserInfoDto showMyInfo(){
         return memberService.showMyInfo();
     }
-    @GetMapping("/users/my-page/storage") //  여기서는 스크랩한 이슈 정보만 넘김
+    @GetMapping("/users/my-page/scrap") //  여기서는 스크랩한 이슈 정보만 넘김
     public List<UserScrapInfoDto> showMyScrap(){
         return memberService.showMyScrap();
+    }
+    @GetMapping("/users/my-page/comparison")
+    public List<ShowMyResultDto> showMyComparison(){
+        return memberService.showMyComparisonResult();
     }
     @PatchMapping("/users/my-page/change/id")
     public void changeMemberId(@RequestBody ChangeMemberIdDTO changeMemberIdDTO, HttpServletResponse response) throws IOException {
