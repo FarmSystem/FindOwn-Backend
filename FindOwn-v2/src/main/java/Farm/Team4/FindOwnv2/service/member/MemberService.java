@@ -2,6 +2,7 @@ package Farm.Team4.FindOwnv2.service.member;
 
 import Farm.Team4.FindOwnv2.domain.platform.Member;
 import Farm.Team4.FindOwnv2.dto.auth.response.ResultPasswordDTO;
+import Farm.Team4.FindOwnv2.dto.comparison.request.ShowMyResultDto;
 import Farm.Team4.FindOwnv2.dto.member.request.ChangeMemberIdDTO;
 import Farm.Team4.FindOwnv2.dto.member.request.ChangeMemberPasswordDTO;
 import Farm.Team4.FindOwnv2.dto.member.request.SaveMemberDTO;
@@ -57,6 +58,18 @@ public class MemberService {
                         .day(scrap.getIssue().getCreatedAt().getDayOfMonth())
                         .scrapCnt(scrap.getIssue().getScrapCnt())
                         .viewCnt(scrap.getIssue().getViewCnt())
+                        .build()
+                ).toList();
+    }
+    public List<ShowMyResultDto> showMyComparisonResult(){
+        Member loginMember = getMember();
+         return loginMember.getMyJudgements().stream()
+                .map(comparison -> ShowMyResultDto.builder()
+                        .comparisonId(comparison.getId())
+                        .originImage(comparison.getOriginImage())
+                        .createdAt(comparison.getCreatedAt())
+                        .open(comparison.isOpen())
+                        .memberId(loginMember.getId())
                         .build()
                 ).toList();
     }
