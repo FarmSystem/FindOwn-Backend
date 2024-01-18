@@ -1,10 +1,9 @@
-package Farm.Team4.FindOwnv2.dto.comparison.response;
+package Farm.Team4.FindOwnv2.dto.comparison.response.client;
 
+import Farm.Team4.FindOwnv2.dto.comparison.response.django.JudgementAIDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
 import lombok.Getter;
 
-@Builder
 @Getter
 public class ComparisonTrademarkDto{
         @JsonProperty("result")
@@ -19,6 +18,8 @@ public class ComparisonTrademarkDto{
         private String applicationNumber;
         @JsonProperty("applicant_name")
         private String applicationName;
+        @JsonProperty("application_status")
+        private String applicationStatus;
         public ComparisonTrademarkDto(JudgementAIDto judgementAIDto) {
                 this.result = judgementAIDto.getResult();
                 this.similarity = judgementAIDto.getSimilarity().toString();
@@ -26,5 +27,16 @@ public class ComparisonTrademarkDto{
                 this.imagePath = judgementAIDto.getImagePath();
                 this.applicationNumber = judgementAIDto.getApplicationNumber();
                 this.applicationName = judgementAIDto.getApplicantName();
+                this.applicationStatus = judgementAIDto.getApplicationStatus();
+        }
+
+        public ComparisonTrademarkDto(String result, String similarity, String title, String imagePath, String applicationNumber, String applicationName, String applicationStatus) {
+                this.result = result;
+                this.similarity = similarity;
+                this.title = title;
+                this.imagePath = imagePath;
+                this.applicationNumber = applicationNumber;
+                this.applicationName = applicationName;
+                this.applicationStatus = applicationStatus;
         }
 }
