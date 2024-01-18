@@ -58,6 +58,10 @@ public class ComparisonService {
                 .toList();
         return new ComparisonResultDto(imageUrl, comparisonTrademarkDtos);
     }
+    public Comparison findById(Long comparisonId){
+        return comparisonRepository.findById(comparisonId)
+                .orElseThrow(() -> new FindOwnException(CustomErrorCode.NOT_FOUND_COMPARISON));
+    }
     @Transactional
     public void saveComparison(SaveComparisonDto saveComparisonDto){
         Comparison comparison = comparisonRepository.save(Comparison.builder()
@@ -70,5 +74,10 @@ public class ComparisonService {
         saveComparisonDto.trademarks().forEach(
                 comparisonTrademarkDto -> trademarkService.saveTrademark(comparisonTrademarkDto, comparison)
         );
+    }
+    @Transactional
+    public void deleteComparison(Long comparisonId) {
+        comparisonRepository.delete(findById(comparisonId));
+        log.info("comparison 삭제 완료");
     }
 }

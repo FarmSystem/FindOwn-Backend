@@ -30,4 +30,8 @@ public class ComparisonController {
     public void saveComparison(@RequestBody SaveComparisonDto saveComparisonDto){
         comparisonService.saveComparison(saveComparisonDto);
     }
+    @DeleteMapping("/")
+    public void deleteComparison(@RequestParam Long comparisonId){
+        comparisonService.deleteComparison(comparisonId);
+    }
 }
