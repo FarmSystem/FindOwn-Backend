@@ -1,8 +1,11 @@
 package Farm.Team4.FindOwnv2.domain.platform;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -12,14 +15,17 @@ public class Comparison {
     @Column(name = "comparison_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String testImageUrl; // -> image는 객체 만들어서 추후 변경 예정
-    private String resultImageUrl;
-    private String trademarkName;
-    private String applicant;
-    private String result;
-    private int resultNum;
+    private String originImage;
+    private boolean open;
+    private LocalDate createdAt;
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
-
+    @Builder
+    public Comparison(String originImage, boolean open, Member member) {
+        this.originImage = originImage;
+        this.open = open;
+        this.createdAt = LocalDate.now();
+        this.member = member;
+    }
 }
