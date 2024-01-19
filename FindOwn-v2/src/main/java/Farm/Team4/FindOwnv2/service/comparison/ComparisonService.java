@@ -1,9 +1,9 @@
 package Farm.Team4.FindOwnv2.service.comparison;
 
 import Farm.Team4.FindOwnv2.domain.platform.Comparison;
-import Farm.Team4.FindOwnv2.domain.platform.Member;
 import Farm.Team4.FindOwnv2.dto.comparison.request.SaveComparisonDto;
 import Farm.Team4.FindOwnv2.dto.comparison.response.client.ComparisonResultDto;
+import Farm.Team4.FindOwnv2.dto.comparison.response.client.ShowOpenComparisonDto;
 import Farm.Team4.FindOwnv2.dto.comparison.response.django.DjangoDto;
 import Farm.Team4.FindOwnv2.dto.comparison.response.client.ComparisonTrademarkDto;
 import Farm.Team4.FindOwnv2.exception.CustomErrorCode;
@@ -61,6 +61,24 @@ public class ComparisonService {
     public Comparison findById(Long comparisonId){
         return comparisonRepository.findById(comparisonId)
                 .orElseThrow(() -> new FindOwnException(CustomErrorCode.NOT_FOUND_COMPARISON));
+    }
+    public List<ShowOpenComparisonDto> showOpenComparison() {
+        return comparisonRepository.findAllByOpenOrderByCreatedAtDescIdDesc(true).stream()
+                .map(comparison -> ShowOpenComparisonDto.builder()
+                        .memberLogin(comparison.getMember().getUsername())
+                        .comparisonId(comparison.getId())
+                        .originImage(comparison.getOriginImage())
+                        .createdAt(comparison.getCreatedAt())
+                        .build()
+                ).toList();
+    }
+    public ComparisonResultDto showComparisonDetail(Long comparisonId) {
+        Comparison findComparison = findById(comparisonId);
+        List<ComparisonTrademarkDto> comparisonTrademarkDtos = findComparison.getTrademarks().stream()
+                .map(trademark -> new ComparisonTrademarkDto(trademark))
+                .toList();
+        return new ComparisonResultDto(findComparison.getOriginImage(), comparisonTrademarkDtos);
+
     }
     @Transactional
     public void saveComparison(SaveComparisonDto saveComparisonDto){
