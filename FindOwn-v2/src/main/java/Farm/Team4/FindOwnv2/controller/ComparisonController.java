@@ -2,7 +2,7 @@ package Farm.Team4.FindOwnv2.controller;
 
 import Farm.Team4.FindOwnv2.dto.comparison.request.SaveComparisonDto;
 import Farm.Team4.FindOwnv2.dto.comparison.response.client.ComparisonResultDto;
-import Farm.Team4.FindOwnv2.dto.comparison.response.client.ComparisonTrademarkDto;
+import Farm.Team4.FindOwnv2.dto.comparison.response.client.ShowOpenComparisonDto;
 import Farm.Team4.FindOwnv2.service.comparison.ComparisonService;
 import Farm.Team4.FindOwnv2.service.comparison.ImageService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +29,14 @@ public class ComparisonController {
     @PostMapping
     public void saveComparison(@RequestBody SaveComparisonDto saveComparisonDto){
         comparisonService.saveComparison(saveComparisonDto);
+    }
+    @GetMapping
+    public List<ShowOpenComparisonDto> showOpenComparison(){
+        return comparisonService.showOpenComparison();
+    }
+    @GetMapping("/")
+    public ComparisonResultDto showComparisonDetail(@RequestParam Long comparisonId){
+        return comparisonService.showComparisonDetail(comparisonId);
     }
     @DeleteMapping("/")
     public void deleteComparison(@RequestParam Long comparisonId){
