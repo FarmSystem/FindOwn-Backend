@@ -1,5 +1,6 @@
 package Farm.Team4.FindOwnv2.dto.comparison.response.client;
 
+import Farm.Team4.FindOwnv2.domain.platform.Trademark;
 import Farm.Team4.FindOwnv2.dto.comparison.response.django.JudgementAIDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -28,6 +29,15 @@ public class ComparisonTrademarkDto{
                 this.applicationNumber = judgementAIDto.getApplicationNumber();
                 this.applicationName = judgementAIDto.getApplicantName();
                 this.applicationStatus = judgementAIDto.getApplicationStatus();
+        }
+        public ComparisonTrademarkDto(Trademark trademark){
+                this.result = trademark.getResult();
+                this.similarity = trademark.getSimilarity();
+                this.title = trademark.getTitle();
+                this.imagePath = trademark.getImagePath();
+                this.applicationName = trademark.getApplicantName();
+                this.applicationNumber = trademark.getApplicationNumber();
+                this.applicationStatus = trademark.getApplicationStatus();
         }
 
         public ComparisonTrademarkDto(String result, String similarity, String title, String imagePath, String applicationNumber, String applicationName, String applicationStatus) {

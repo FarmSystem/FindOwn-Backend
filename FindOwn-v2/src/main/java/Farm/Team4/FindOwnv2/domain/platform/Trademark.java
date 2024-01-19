@@ -15,6 +15,7 @@ public class Trademark {
     @Column(name = "trademark_id")
     private Long id;
     private String result;
+    private String imagePath;
     private String similarity;
     private String title;
     private String applicationNumber;
@@ -27,6 +28,7 @@ public class Trademark {
     public Trademark(ComparisonTrademarkDto comparisonTrademarkDto, Comparison comparison) {
         this.result = comparisonTrademarkDto.getResult();
         this.similarity = comparisonTrademarkDto.getSimilarity().toString();
+        this.imagePath = comparisonTrademarkDto.getImagePath();
         this.title = comparisonTrademarkDto.getTitle();
         this.applicationNumber = comparisonTrademarkDto.getApplicationNumber();
         this.applicantName = comparisonTrademarkDto.getApplicationName();
