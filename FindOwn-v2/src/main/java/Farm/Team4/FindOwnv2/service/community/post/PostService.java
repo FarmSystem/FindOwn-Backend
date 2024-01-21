@@ -94,6 +94,8 @@ public class PostService {
     @Transactional
     public void updatePost(UpdatePostDTO updatePostDTO){
         Post findPost = findById(updatePostDTO.getPostId());
+        if (!findPost.getWriter().equals(getMember()))
+            throw new FindOwnException(CustomErrorCode.NOT_MATCH_WRITER);
         findPost.update(updatePostDTO);
         log.info("게시글 내용 수정 완료");
     }
