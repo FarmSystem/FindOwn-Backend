@@ -12,8 +12,6 @@ import Farm.Team4.FindOwnv2.dto.member.response.UserScrapInfoDto;
 import Farm.Team4.FindOwnv2.exception.CustomErrorCode;
 import Farm.Team4.FindOwnv2.exception.FindOwnException;
 import Farm.Team4.FindOwnv2.repository.MemberRepository;
-import Farm.Team4.FindOwnv2.service.community.scrap.ScrapService;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,7 +19,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.List;
 
 @Slf4j
@@ -88,9 +85,9 @@ public class MemberService {
     @Transactional
     public void changeUsername(ChangeMemberIdDTO changeMemberIdDTO) {
         Member member = getMember();
-        if (!member.getNickname().equals(changeMemberIdDTO.getNewNickname()))
+        if (!member.getNickname().equals(changeMemberIdDTO.getOriginNickname()))
             throw new FindOwnException(CustomErrorCode.NOT_FOUND_MEMBER);
-        member.changeUsername(changeMemberIdDTO.getNewNickname());
+        member.changeNickname(changeMemberIdDTO.getNewNickname());
         log.info("회원 닉네임 변경 완료");
     }
     @Transactional

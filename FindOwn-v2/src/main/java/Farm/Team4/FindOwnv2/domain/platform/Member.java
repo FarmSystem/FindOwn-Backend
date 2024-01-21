@@ -3,7 +3,6 @@ package Farm.Team4.FindOwnv2.domain.platform;
 import Farm.Team4.FindOwnv2.domain.community.board.Post;
 import Farm.Team4.FindOwnv2.domain.community.issue.Scrap;
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -46,5 +45,5 @@ public class Member {
     public void changeEncoded(String encodedPassword){
         this.password = encodedPassword;
     }
-    public void changeUsername(String newNickname) {this.username = newNickname;}
+    public void changeNickname(String newNickname) {this.nickname = newNickname;}
 }
