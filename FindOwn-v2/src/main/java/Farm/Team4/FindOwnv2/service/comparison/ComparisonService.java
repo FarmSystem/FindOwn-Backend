@@ -32,7 +32,7 @@ public class ComparisonService {
     private final ImageService imageService;
     private final ComparisonRepository comparisonRepository;
     private final RestTemplate restTemplate = new RestTemplate();
-    private static final String COMPARISON_PATH = "http://localhost:8000/api/v2/users/imageprocess/?image=";
+    private static final String COMPARISON_PATH = "http://www.find-own.site/api/v2/users/imageprocess/?image=";
     public ComparisonResultDto confirmComparisonResult(String imageUrl) throws IOException {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
