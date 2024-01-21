@@ -48,7 +48,7 @@ public class PostService {
                 destPost.getTag().toString(),
                 destPost.getContent(),
                 destPost.getCreatedAt(),
-                destPost.getViewCnt(),
+                destPost.getViewCnt()/2,
                 destPost.getComments().stream()
                         .map(comment -> new ShowCommentDTO(comment.getId(), comment.getWriter().getUsername(), comment.getContent(), comment.getCreatedAt()))
                         .toList()
@@ -87,7 +87,7 @@ public class PostService {
                         post.getTag().name(),
                         post.getCreatedAt(),
                         post.getComments().size(),
-                        post.getViewCnt()))
+                        post.getViewCnt()/2))
                 .toList();
     }
 
