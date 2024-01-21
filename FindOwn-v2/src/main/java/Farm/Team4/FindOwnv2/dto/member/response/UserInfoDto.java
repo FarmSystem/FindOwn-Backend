@@ -6,8 +6,8 @@ import lombok.Builder;
 import java.time.LocalDate;
 @Builder
 public record UserInfoDto (
-        @JsonProperty("korName")
-        String korName,
+        @JsonProperty("nickname")
+        String nickname,
         @JsonProperty("email")
         String email,
         @JsonProperty("password_update_date")
