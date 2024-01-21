@@ -20,6 +20,7 @@ public class Member {
     @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+    private String korName;
     private String username;
     private String password;
     private String email;
@@ -33,9 +34,10 @@ public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Scrap> myScraps = new ArrayList<>();
 
-    public Member(String username, String password,  String email) {
+    public Member(String username, String password, String korName, String email) {
         this.username = username;
         this.password = password;
+        this.korName = korName;
         this.email = email;
         this.register = LocalDateTime.now();
         this.role = "USER";
