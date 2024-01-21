@@ -63,7 +63,7 @@ public class PostService {
                         post.getTag().name(),
                         post.getCreatedAt(),
                         post.getComments().size(),
-                        post.getViewCnt()))
+                        post.getViewCnt()/2))
                 .toList();
     }
     public List<ShowPostSimpleDTO> showTagPostSimple(String tagName) {
@@ -75,7 +75,7 @@ public class PostService {
                         post.getTag().name(),
                         post.getCreatedAt(),
                         post.getComments().size(),
-                        post.getViewCnt()))
+                        post.getViewCnt()/2))
                 .toList();
     }
     public List<ShowPostSimpleDTO> showSearchResults(String title){
