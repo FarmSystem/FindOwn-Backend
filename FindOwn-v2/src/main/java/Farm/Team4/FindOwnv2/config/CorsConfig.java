@@ -15,7 +15,7 @@ public class CorsConfig {
         CorsConfiguration corsConfig = new CorsConfiguration();
 
         corsConfig.setAllowCredentials(true);
-        corsConfig.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:8080", "http://localhost:8000", "http://52.78.3.207", "http://www.find-own.site"));
+        corsConfig.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:8080", "http://localhost:8000", "http://52.78.3.207", "http://www.find-own.site:3000", "http://find-own.site:3000"));
         corsConfig.setAllowedMethods(List.of("GET", "POST", "PATCH", "DELETE"));
         corsConfig.setAllowedHeaders(List.of("*"));
         corsConfig.setAllowedHeaders(List.of("*"));
