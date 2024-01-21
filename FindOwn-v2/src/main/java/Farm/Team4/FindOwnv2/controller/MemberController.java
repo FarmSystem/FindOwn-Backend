@@ -52,16 +52,16 @@ public class MemberController {
     @PatchMapping("/users/my-page/change/id")
     public void changeMemberId(@RequestBody ChangeMemberIdDTO changeMemberIdDTO, HttpServletResponse response) throws IOException {
         memberService.changeUsername(changeMemberIdDTO);
-        response.sendRedirect("http://localhost:8080/api/v2/users/logout");
+        response.sendRedirect("http://www.find-own.site/api/v2/users/logout");
     }
     @PatchMapping("/users/my-page/change/pw")
     public void changeMemberPassword(@RequestBody ChangeMemberPasswordDTO changeMemberPasswordDTO, HttpServletResponse response) throws IOException {
         memberService.changePassword(changeMemberPasswordDTO);
-        response.sendRedirect("http://localhost:8080/api/v2/users/logout");
+        response.sendRedirect("http://www.find-own.site/api/v2/users/logout");
     }
     @DeleteMapping("/users/my-page/delete")
     public void deleteMember(HttpServletResponse response) throws IOException {
         memberService.deleteMember();
-        response.sendRedirect("http://localhost:8080/api/v2/users/logout");
+        response.sendRedirect("http://www.find-own.site/api/v2/users/logout");
     }
 }
