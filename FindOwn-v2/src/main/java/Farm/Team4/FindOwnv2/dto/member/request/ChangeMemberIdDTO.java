@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ChangeMemberIdDTO {
-    private String originMemberId;
-    private String newMemberId;
+    private String originNickname;
+    private String newNickname;
 }

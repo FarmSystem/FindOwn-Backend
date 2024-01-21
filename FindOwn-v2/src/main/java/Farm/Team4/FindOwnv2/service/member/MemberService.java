@@ -42,7 +42,7 @@ public class MemberService {
     public UserInfoDto showMyInfo(){
         Member loginMember = getMember();
         return UserInfoDto.builder()
-                .korName(loginMember.getKorName())
+                .korName(loginMember.getNickname())
                 .email(loginMember.getEmail())
                 .passwordUpdateDate(loginMember.getPasswordUpdateDate())
                 .build();
@@ -87,11 +87,11 @@ public class MemberService {
     }
     @Transactional
     public void changeUsername(ChangeMemberIdDTO changeMemberIdDTO) {
-        Member member = findByUsername(changeMemberIdDTO.getOriginMemberId());
-        if (!member.getUsername().equals(changeMemberIdDTO.getOriginMemberId()))
+        Member member = getMember();
+        if (!member.getNickname().equals(changeMemberIdDTO.getNewNickname()))
             throw new FindOwnException(CustomErrorCode.NOT_FOUND_MEMBER);
-        member.changeUsername(changeMemberIdDTO.getNewMemberId());
-        log.info("회원 아이디 변경 완료");
+        member.changeUsername(changeMemberIdDTO.getNewNickname());
+        log.info("회원 닉네임 변경 완료");
     }
     @Transactional
     public void changePassword(ChangeMemberPasswordDTO changeMemberPasswordDTO) {

@@ -20,7 +20,7 @@ public class Member {
     @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    private String korName;
+    private String nickname;
     private String username;
     private String password;
     private String email;
@@ -34,10 +34,10 @@ public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Scrap> myScraps = new ArrayList<>();
 
-    public Member(String username, String password, String korName, String email) {
+    public Member(String username, String password, String nickname, String email) {
         this.username = username;
         this.password = password;
-        this.korName = korName;
+        this.nickname = nickname;
         this.email = email;
         this.register = LocalDateTime.now();
         this.role = "USER";
@@ -46,5 +46,5 @@ public class Member {
     public void changeEncoded(String encodedPassword){
         this.password = encodedPassword;
     }
-    public void changeUsername(String newUsername) {this.username = newUsername;}
+    public void changeUsername(String newNickname) {this.username = newNickname;}
 }
