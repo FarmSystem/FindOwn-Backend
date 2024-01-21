@@ -47,7 +47,7 @@ public class IssueService {
                 findIssue.getContent(),
                 findIssue.getSource(),
                 findIssue.getReporter(),
-                findIssue.getViewCnt()/2,
+                findIssue.getViewCnt(),
                 findIssue.getScrapCnt(),
                 scrapRepository.existsByMemberAndIssue(loginMember, findIssue)
         );
@@ -58,8 +58,8 @@ public class IssueService {
                 .map(issue -> new ShowIssueSimpleDTO(
                         issue.getId(),
                         issue.getTitle(),
-                        issue.getContent().substring(0,30) + "...",
-                        issue.getViewCnt()/2,
+                        issue.getContent().substring(0,5) + "...",
+                        issue.getViewCnt(),
                         issue.getScrapCnt(),
                         issue.getCreatedAt(),
                         scrapRepository.existsByMemberAndIssue(loginMember, issue)
