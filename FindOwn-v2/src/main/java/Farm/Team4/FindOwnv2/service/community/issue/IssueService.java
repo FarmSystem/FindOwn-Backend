@@ -47,7 +47,7 @@ public class IssueService {
                 findIssue.getContent(),
                 findIssue.getSource(),
                 findIssue.getReporter(),
-                findIssue.getViewCnt(),
+                findIssue.getViewCnt()/2,
                 findIssue.getScrapCnt(),
                 scrapRepository.existsByMemberAndIssue(loginMember, findIssue)
         );
@@ -59,7 +59,7 @@ public class IssueService {
                         issue.getId(),
                         issue.getTitle(),
                         issue.getContent().substring(0,30) + "...",
-                        issue.getViewCnt(),
+                        issue.getViewCnt()/2,
                         issue.getScrapCnt(),
                         issue.getCreatedAt(),
                         scrapRepository.existsByMemberAndIssue(loginMember, issue)
