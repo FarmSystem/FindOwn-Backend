@@ -13,6 +13,7 @@ import Farm.Team4.FindOwnv2.service.member.MemberService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 
 @Slf4j
@@ -31,7 +33,10 @@ public class ComparisonService {
     private final TrademarkService trademarkService;
     private final ImageService imageService;
     private final ComparisonRepository comparisonRepository;
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplateBuilder()
+            .setConnectTimeout(Duration.ofSeconds(120))
+            .setReadTimeout(Duration.ofSeconds(120))
+            .build();
     private static final String COMPARISON_PATH = "http://localhost:8000/api/v2/users/imageprocess/?image=";
     public ComparisonResultDto confirmComparisonResult(String imageUrl) throws IOException {
         HttpHeaders headers = new HttpHeaders();
