@@ -20,6 +20,6 @@ RUN ./gradlew --no-daemon clean build
 
 # 실행 스테이지
 FROM openjdk:17-alpine
-COPY --from=builder /app/build/libs/*.jar /app/app.jar
+COPY --from=builder /app/build/libs/*.jar findown-backend.jar
 ENTRYPOINT ["java"]
-CMD ["-jar","/app/app.jar"]
+CMD ["-jar","findown-backend.jar"]
